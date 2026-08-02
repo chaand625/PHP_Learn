@@ -1,9 +1,9 @@
 <?php
 try {
     $pdo = new PDO(
-        'mysql:host=mysql;dbname=ijdb',
+        'mysql:host=mysql;dbname=ijdb;charset=utf8mb4',
         'ijdbuser',
-        'mypassword3'
+        'mypassword'
     );
     $output = 'Database connection established.';
 } catch (PDOException $e) {
