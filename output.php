@@ -2,8 +2,8 @@
 try {
     $pdo = new PDO(
         'mysql:host=mysql;dbname=ijdb',
-        '****',
-        '****'
+        'ijdbuser',
+        'mypassword3'
     );
     $output = 'Database connection established.';
 } catch (PDOException $e) {
