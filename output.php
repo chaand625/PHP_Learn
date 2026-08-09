@@ -6,17 +6,12 @@ try {
         'mypassword'
     );
 
-    $sql = 'CREATE TABLE joke(
-        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        joketext TEXT,
-        jokedate DATE NOT NULL
-        ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB
-    ';
+    $sql =  'UPDATE joke SET jokedate="2021-04-01"
+WHERE joketext LIKE "%programmer%"';
 
-    $pdo->exec($sql);
-    
+    $affectedRows = $pdo->exec($sql);
+    $output = 'Updated ' . $affectedRows .' rows.';
 
-    $output = 'Joke table successfully created.';
 } catch (PDOException $e) {
     $output = 'Unable to connect to the database server: ' . $e->getMessage() . ' in' . $e->getFile() . ':' . $e->getLine();
 }
