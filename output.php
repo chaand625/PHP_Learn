@@ -6,15 +6,17 @@ try {
         'mypassword'
     );
 
-    $sql =  'UPDATE joke SET jokedate="2021-04-01"
-WHERE joketext LIKE "%programmer%"';
+    $sql =  'SELECT `joketext` FROM `joke`';
 
-    $affectedRows = $pdo->exec($sql);
-    $output = 'Updated ' . $affectedRows .' rows.';
+    $result = $pdo->query($sql);
 
+    while($row = $result->fetch()){
+        $jokes[] = $row['joketext'];
+    }
+    $output = 'Result fetched successfully';
 } catch (PDOException $e) {
-    $output = 'Unable to connect to the database server: ' . $e->getMessage() . ' in' . $e->getFile() . ':' . $e->getLine();
+    $error = 'Unable to connect to the database server: ' . $e->getMessage() . ' in' . $e->getFile() . ':' . $e->getLine();
 }
 
 
-include __DIR__ . '/../templates/output.html.php';
+include __DIR__ . '/../templates/jokes.html.php';
