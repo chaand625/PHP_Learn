@@ -9,14 +9,10 @@ try {
     }
 
     $title = 'Joke list';
-    $output = '';
-    foreach ($jokes as $joke) {
-        $output .= '<blockquote>';
-        $output .= '<p>';
-        $output .= $joke;
-        $output .= '</p>';
-        $output .= '</blockquote>';
-    }
+    ob_start();
+    include __DIR__ . '/templates/jokes.html.php';
+    $output = ob_get_clean();
+    
 } catch (PDOException $e) {
     $title = 'An error has occurred';
     $output = 'Database error: ' . $e->getMessage() . ' in ' .
