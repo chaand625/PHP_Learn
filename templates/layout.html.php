@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="vje.css"> -->
     <title>$title</title>
 </head>
 <body>
@@ -15,6 +16,7 @@
         <ul>
             <li> <a href="home.php">Home</a> </li>
             <li> <a href="jokes.php">Jokes List</a> </li>
+            <li> <a href="addjokes.php">Add a new Joke</a> </li>
         </ul>
     </nav>
 

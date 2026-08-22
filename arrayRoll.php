@@ -8,7 +8,7 @@ $englishArray = [
     6 => 'six'
 ];
 
-$roll = rand(1, 6);
+$roll = rand(1, 6); 
 
 echo 'You rolled a ' . $englishArray[$roll];
 
