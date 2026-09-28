@@ -3,8 +3,16 @@
 if (isset($_POST['joketext'])) {
     try {
         $pdo = new PDO('mysql:host=mysql;dbname=ijdb;charset=utf8mb4', 'ijdbuser', 'mypassword');
-        $sql = 'INSERT INTO `joke` SET `joketext` ="' . $_POST['joketext'] . '", `jokedate` ="2021-02-04"';
-        $pdo->exec($sql);
+       $sql = 'INSERT INTO `joke` SET
+        `joketext`= :joketext,
+         `jokedate` =  CURDATE()';         
+    
+
+    // prepare returns PDOStatment?(yes the one used in SELECT)
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':joketext',$_POST['joketext']);
+    $stmt->execute();
+    header('location: jokes.php');
     } catch (PDOException $e) {
         $title = 'An error has occurred';
         $output = 'Database error: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine();
